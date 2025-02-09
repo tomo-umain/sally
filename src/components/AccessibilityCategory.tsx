@@ -30,12 +30,12 @@ export function AccessibilityCategory({
       />
 
       {!loading && hasRun[category] && (
-        <TotalIssues hasRun={hasRun[category]} totalIssues={count || 0} />
+        <TotalIssues totalIssues={count || 0} category={category} />
       )}
 
-      <div className={cn("!flex !flex-col !gap-2")}>
-        {!loading && count && count > 0 ? children : null}
-      </div>
+      {!loading && count && count > 0 ? (
+        <div className={cn("!flex !flex-col !gap-2")}>{children}</div>
+      ) : null}
     </div>
   );
 }

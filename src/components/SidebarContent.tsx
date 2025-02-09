@@ -73,7 +73,7 @@ export function SidebarContent() {
         ...prev,
         [category]: false,
       }));
-    }, 1000);
+    }, 300);
   };
 
   return (

@@ -1,6 +1,7 @@
 import { PlayIcon, RefreshCwIcon } from "lucide-react";
 import { cn } from "../lib/utils";
 import { AccessibilityCategoryType } from "./AccessibilityCategory";
+import { Button } from "./ui/button";
 
 export const RunButton = ({
   runCategoryCheck,
@@ -13,9 +14,9 @@ export const RunButton = ({
 }) => {
   return (
     <div>
-      <button
+      <Button
         onClick={() => runCategoryCheck(category)}
-        className="!rounded border !border-gray-300 !bg-white !px-4 !py-2 !text-sm !font-medium !text-gray-700 !shadow-sm hover:!bg-gray-50 focus:!outline-none focus:!ring-2 focus:!ring-indigo-500 focus:!ring-offset-2 !flex !gap-2 !items-center cursor-pointer"
+        className="cursor-pointer"
       >
         <div className="!flex !gap-2 !items-center">
           <RefreshCwIcon
@@ -30,7 +31,7 @@ export const RunButton = ({
           />
           Run {category} checks
         </div>
-      </button>
+      </Button>
     </div>
   );
 };

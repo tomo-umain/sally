@@ -1,27 +1,29 @@
 import { CircleCheckIcon, TriangleAlertIcon } from "lucide-react";
-import { Alert, AlertTitle } from "../components/ui/alert";
+import { Alert, AlertDescription } from "../components/ui/alert";
+import { cn } from "../lib/utils";
+import { AccessibilityCategoryType } from "./AccessibilityCategory";
 
 export const TotalIssues = ({
-  hasRun,
   totalIssues,
   className,
+  category,
 }: {
-  hasRun: boolean;
   totalIssues: number;
   className?: string;
+  category: AccessibilityCategoryType;
 }) => {
   const variant = totalIssues > 0 ? "destructive" : "success";
 
   return (
-    <Alert variant={variant} className="animate-fade-in">
-      <AlertTitle className="flex items-center gap-2">
+    <Alert variant={variant} className={cn("animate-fade-in", className)}>
+      <AlertDescription className="flex items-center gap-2">
         {variant === "success" ? (
           <CircleCheckIcon size={18} className="text-green-700" />
         ) : (
           <TriangleAlertIcon size={18} />
         )}
-        {`${totalIssues} issue${totalIssues === 1 ? "" : "s"} to address`}
-      </AlertTitle>
+        {`${totalIssues} ${category} issue${totalIssues === 1 ? "" : "s"}`}
+      </AlertDescription>
     </Alert>
   );
 };

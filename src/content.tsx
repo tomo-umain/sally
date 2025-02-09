@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((request) => {
 });
 
 // auto open sidebar on page load
-toggleSidebar();
+// toggleSidebar();
 
 export function toggleSidebar() {
   if (sidebarRoot) {

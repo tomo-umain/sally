@@ -1,6 +1,8 @@
+import { CodeXmlIcon, ContrastIcon, ImageIcon } from "lucide-react";
 import { useState } from "react";
 import { checkAccessibility } from "../lib/checks";
 import "../lib/tailwind.min";
+import { cn } from "../lib/utils";
 import {
   AccessibilityCategory,
   AccessibilityCategoryType,
@@ -20,15 +22,7 @@ export interface AccessibilityIssue {
   outerHTML?: string;
   impact: string;
   help: string;
-}
-
-export interface AccessibilityViolationProps {
-  severity: "error" | "warning";
-  message: string;
-  element?: string;
-  outerHTML?: string;
-  impact?: string;
-  help?: string;
+  icon?: React.ReactNode;
 }
 
 export function SidebarContent() {
@@ -84,12 +78,16 @@ export function SidebarContent() {
         loading={loading.structure}
         runCategoryCheck={runCategoryCheck}
         hasRun={hasRun}
+        icon={
+          <CodeXmlIcon
+            size="16"
+            className={cn(loading.structure && "!hidden")}
+          />
+        }
       >
-        {violations.structure.map(
-          (violation: AccessibilityViolationProps, index) => (
-            <AccessibilityViolation key={index} {...violation} />
-          )
-        )}
+        {violations.structure.map((violation: AccessibilityIssue, index) => (
+          <AccessibilityViolation key={index} {...violation} />
+        ))}
       </AccessibilityCategory>
 
       <AccessibilityCategory
@@ -98,12 +96,11 @@ export function SidebarContent() {
         loading={loading.aria}
         runCategoryCheck={runCategoryCheck}
         hasRun={hasRun}
+        icon={<ImageIcon size="16" className={cn(loading.aria && "!hidden")} />}
       >
-        {violations.aria.map(
-          (violation: AccessibilityViolationProps, index) => (
-            <AccessibilityViolation key={index} {...violation} />
-          )
-        )}
+        {violations.aria.map((violation: AccessibilityIssue, index) => (
+          <AccessibilityViolation key={index} {...violation} />
+        ))}
       </AccessibilityCategory>
 
       <AccessibilityCategory
@@ -112,12 +109,16 @@ export function SidebarContent() {
         loading={loading.contrast}
         runCategoryCheck={runCategoryCheck}
         hasRun={hasRun}
+        icon={
+          <ContrastIcon
+            size="16"
+            className={cn(loading.contrast && "!hidden")}
+          />
+        }
       >
-        {violations.contrast.map(
-          (violation: AccessibilityViolationProps, index) => (
-            <AccessibilityViolation key={index} {...violation} />
-          )
-        )}
+        {violations.contrast.map((violation: AccessibilityIssue, index) => (
+          <AccessibilityViolation key={index} {...violation} />
+        ))}
       </AccessibilityCategory>
     </div>
   );

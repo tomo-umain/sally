@@ -47,5 +47,5 @@ export const calculateContrastRatio = (
 export const convertToALevel = (ratio: number): string => {
   if (ratio >= 7) return "AAA";
   if (ratio >= 4.5) return "AA";
-  return "Fails WCAG";
+  return "";
 };

@@ -1,13 +1,15 @@
-import { PlayIcon, RefreshCwIcon } from "lucide-react";
+import { RefreshCwIcon } from "lucide-react";
 import { cn } from "../lib/utils";
 import { AccessibilityCategoryType } from "./AccessibilityCategory";
 import { Button } from "./ui/button";
 
 export const RunButton = ({
+  icon,
   runCategoryCheck,
   category,
   loading = false,
 }: {
+  icon: React.ReactNode;
   runCategoryCheck: (category: AccessibilityCategoryType) => void;
   category: AccessibilityCategoryType;
   loading?: boolean;
@@ -20,16 +22,11 @@ export const RunButton = ({
       >
         <div className="!flex !gap-2 !items-center">
           <RefreshCwIcon
-            width="16"
-            height="16"
+            size="16"
             className={cn("!animate-spin", !loading && "!hidden")}
           />
-          <PlayIcon
-            width="16"
-            height="16"
-            className={cn(loading && "!hidden")}
-          />
-          Run {category} checks
+          {icon}
+          run {category} checks
         </div>
       </Button>
     </div>

@@ -10,7 +10,7 @@ import {
 } from "./components/ui/sheet";
 import "./lib/tailwind.min";
 
-function AllySidebar() {
+function SallySidebar() {
   return (
     <Sheet defaultOpen={true}>
       <SheetContent className="!bg-white !text-black !z-[5000] !overflow-y-scroll animate-slide-in-from-right">
@@ -27,4 +27,4 @@ function AllySidebar() {
   );
 }
 
-export default AllySidebar;
+export default SallySidebar;

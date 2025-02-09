@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import AllySidebar from "./AllySidebar";
+import SallySidebar from "./SallySidebar";
 
 let sidebarRoot: ReactDOM.Root | null = null;
 
@@ -30,7 +30,7 @@ export function toggleSidebar() {
     sidebarRoot = ReactDOM.createRoot(sidebarContainer);
     sidebarRoot.render(
       <React.StrictMode>
-        <AllySidebar />
+        <SallySidebar />
       </React.StrictMode>
     );
   }

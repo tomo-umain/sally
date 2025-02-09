@@ -11,6 +11,7 @@ export interface AccessibilityCategoryProps {
   loading?: boolean;
   runCategoryCheck: (category: AccessibilityCategoryType) => void;
   hasRun: { aria: boolean; structure: boolean; contrast: boolean };
+  icon: React.ReactNode;
 }
 
 export function AccessibilityCategory({
@@ -20,10 +21,12 @@ export function AccessibilityCategory({
   loading,
   runCategoryCheck,
   hasRun,
+  icon,
 }: AccessibilityCategoryProps) {
   return (
     <div className="!flex !flex-col !gap-4 mt-4">
       <RunButton
+        icon={icon}
         runCategoryCheck={runCategoryCheck}
         category={category}
         loading={loading}

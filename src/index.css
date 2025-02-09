@@ -3,33 +3,8 @@
 @tailwind utilities;
 @tailwind variants;
 
-.a11y-sidebar {
-  right: -384px;
-  width: 384px;
-  overflow-y: auto;
-  height: 100vh;
-}
-
-.a11y-sidebar * {
-  padding: 0;
-  margin: 0;
-}
-
-.a11y-sidebar.open {
-  right: 0;
-}
-
-.a11y-toggle-btn {
-  border-radius: 8px 0 0 8px;
-  top: 60px;
-}
-
-.a11y-toggle-btn.open {
-  right: 384px;
-}
-
-.a11y-toggle-btn.closed {
-  right: 0;
+#accessibility-sidebar * {
+  text-transform: lowercase !important;
 }
 
 .animate-fade-in {

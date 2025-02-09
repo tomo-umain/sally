@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "sally",
+  "version": "1.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "description": "the silliest sidebar accessibility helper you've ever seen",
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+  "action": {},
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/content.tsx-loader-BPAZDprw.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "assets/content-C0y2BeJK.css"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline';"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "assets/content.tsx-DifzqYOU.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}

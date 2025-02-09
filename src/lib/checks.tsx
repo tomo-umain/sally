@@ -1,9 +1,20 @@
+import {
+  CameraIcon,
+  CaptionsIcon,
+  CroissantIcon,
+  DogIcon,
+  IceCreamBowlIcon,
+  MapIcon,
+  MoonStarIcon,
+} from "lucide-react";
 import { AccessibilityCategoryType } from "../components/AccessibilityCategory";
 import {
+  AccessibilityIssue,
   AccessibilityReport,
-  AccessibilityViolationProps,
 } from "../components/SidebarContent";
 import { calculateContrastRatio, convertToALevel } from "./contrast";
+
+const DEBUG = false;
 
 const getSidebar = () =>
   document.getElementById("accessibility-sidebar") as HTMLElement | null;
@@ -59,16 +70,17 @@ const checkContrast = (element: HTMLElement) => {
       calculateContrastRatio(bgColor, textColor).toFixed(1)
     );
 
-    if (contrastRatio <= 4.5 && contrastRatio !== 1) {
+    if (DEBUG || (contrastRatio <= 4.5 && contrastRatio !== 1)) {
       return {
-        severity: "error" as AccessibilityViolationProps["severity"],
-        message: `Low contrast text - (${contrastRatio}) ${convertToALevel(
+        severity: "error" as AccessibilityIssue["severity"],
+        message: `low contrast text - (${contrastRatio}) ${convertToALevel(
           contrastRatio
         )}`,
         element: `<${element.tagName.toLowerCase()}>`,
         outerHTML: element.outerHTML,
-        impact: "Critical - Text may be difficult to read",
-        help: "Ensure a contrast ratio of at least 4.5",
+        impact: "this text may be difficult to read for certain folks.",
+        help: "ensure a contrast ratio of at least 4.5 to follow the WCAG, a standard so good that even dogs can read it.",
+        icon: <DogIcon size={16} className="inline" />,
       };
     }
   } catch (error) {
@@ -87,15 +99,16 @@ const checkAriaLabels = (element: HTMLElement) => {
       element.tagName !== "IFRAME" &&
       !element.textContent?.trim();
 
-    if (!isValidElement) return;
+    if (!DEBUG && !isValidElement) return;
 
     return {
-      severity: "error" as AccessibilityViolationProps["severity"],
-      message: "Interactive element missing accessible name",
+      severity: "error" as AccessibilityIssue["severity"],
+      message: "interactive element missing accessible name",
       element: `<${element.tagName.toLowerCase()}>`,
       outerHTML: element.outerHTML,
-      impact: "Critical - Screen readers cannot identify the purpose",
-      help: "Add aria-label, aria-labelledby, or visible text content",
+      impact: "screen readers cannot identify the purpose of the element.",
+      help: "add aria-label, aria-labelledby, or visible text content. unless its a decorative element, then, uh. nevermind.",
+      icon: <CroissantIcon size={16} className="inline" />,
     };
   } catch (error) {
     console.log(error);
@@ -138,14 +151,15 @@ export const checkAccessibility = (
 
       const hasLabel = labels.some((label) => label.htmlFor === element.id);
 
-      if (!hasLabel && !element.hasAttribute("aria-label")) {
+      if (DEBUG || (!hasLabel && !element.hasAttribute("aria-label"))) {
         issues.aria.push({
           severity: "error",
-          message: "Form control missing label",
+          message: "form control missing label",
           element: `<${element.tagName.toLowerCase()}>`,
           outerHTML: element.outerHTML,
-          impact: "Critical - Screen readers cannot identify the input purpose",
-          help: 'Add a label element with matching "for" attribute or aria-label',
+          impact: "screen readers cannot identify the input purpose",
+          help: `add a label element with matching "for" attribute or aria-label. don't do it for the gram, do it for the screen readers.`,
+          icon: <CameraIcon size={16} className="inline" />,
         });
       }
     });
@@ -154,14 +168,15 @@ export const checkAccessibility = (
       // check alt text for images
       if (isElementInsideSidebar(element)) return;
 
-      if (!element.hasAttribute("alt")) {
+      if (DEBUG || !element.hasAttribute("alt")) {
         issues.aria.push({
           severity: "warning",
-          message: "Image missing alt text",
+          message: "image missing alt text",
           element: "<img>",
           outerHTML: element.outerHTML,
-          impact: "Critical - Screen readers cannot describe the image",
-          help: "Add alt attribute to provide image description if image is not decorative",
+          impact: "screen readers cannot describe the image.",
+          help: "add alt attribute to provide image description, if image is not decorative. an image is only as good as the caption.",
+          icon: <CaptionsIcon size={16} className="inline" />,
         });
       }
     });
@@ -170,14 +185,15 @@ export const checkAccessibility = (
       // check focusable elements
       if (isElementInsideSidebar(element)) return;
 
-      if (element.tabIndex < 0) {
+      if (DEBUG || element.tabIndex < 0) {
         issues.aria.push({
           severity: "warning",
-          message: "Element not focusable via keyboard",
+          message: "element not focusable via keyboard",
           element: `<${element.tagName.toLowerCase()}>`,
           outerHTML: element.outerHTML,
-          impact: "Critical - Element cannot be accessed via keyboard",
-          help: "Ensure element is focusable via keyboard",
+          impact: "element cannot be accessed via keyboard.",
+          help: "ensure element is focusable via keyboard for better accessibility. why? imagine trying to find your charger in a pitch black room, not fun.",
+          icon: <MoonStarIcon size={16} className="inline" />,
         });
       }
     });
@@ -193,19 +209,21 @@ export const checkAccessibility = (
       try {
         const currentLevel = parseInt(element.tagName[1]);
 
-        if (index > 0) {
+        if (DEBUG || index > 0) {
           const prevLevel = parseInt(elements[index - 1].tagName[1]);
 
-          if (currentLevel > prevLevel + 1) {
+          if (DEBUG || currentLevel > prevLevel + 1) {
             issues.structure.push({
               severity: "warning",
-              message: "Skipped heading level",
+              message: "skipped heading level",
               element: `<${element.tagName.toLowerCase()}>`,
               outerHTML: element.outerHTML,
-              impact: "Moderate - Document structure may be confusing",
-              help: `Don't skip heading levels. Expected h${
+              impact:
+                "this document structure may raise some confused eyebrows!",
+              help: `expected h${
                 prevLevel + 1
-              }, found h${currentLevel}`,
+              }, found h${currentLevel}. try not to skip heading levels. you wouldn't go straight to dessert, would you?`,
+              icon: <IceCreamBowlIcon size={16} className="inline" />,
             });
           }
         }
@@ -218,6 +236,7 @@ export const checkAccessibility = (
     landmarkNames.forEach((landmark) => {
       // check landmark regions
       if (
+        DEBUG ||
         !landmarks.some(
           (element) =>
             element.tagName.toLowerCase() === landmark &&
@@ -226,10 +245,12 @@ export const checkAccessibility = (
       ) {
         issues.structure.push({
           severity: "warning",
-          message: "Missing landmark region",
+          message: "missing landmark region",
           element: `<${landmark}>`,
-          impact: "Moderate - Screen readers may not navigate correctly",
-          help: `Add a <${landmark}> element to define the region`,
+          impact:
+            "aw, this is awkward, but screen readers may not navigate correctly with the current setup.",
+          help: `consider adding an <${landmark}> element to define the region. it's like a mini-map for screen readers.`,
+          icon: <MapIcon size={16} className="inline" />,
         });
       }
     });

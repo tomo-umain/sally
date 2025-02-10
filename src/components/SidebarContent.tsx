@@ -1,7 +1,6 @@
 import { CodeXmlIcon, ContrastIcon, ImageIcon } from "lucide-react";
 import { useState } from "react";
 import { checkAccessibility } from "../lib/checks";
-import "../lib/tailwind.min";
 import { cn } from "../lib/utils";
 import {
   AccessibilityCategory,
@@ -71,7 +70,10 @@ export function SidebarContent() {
   };
 
   return (
-    <div className="!flex !flex-col !gap-4" id="accessibility-sidebar">
+    <div
+      className="sally-flex sally-flex-col sally-gap-4"
+      id="accessibility-sidebar"
+    >
       <AccessibilityCategory
         category="structure"
         count={violations.structure.length}
@@ -81,7 +83,7 @@ export function SidebarContent() {
         icon={
           <CodeXmlIcon
             size="16"
-            className={cn(loading.structure && "!hidden")}
+            className={cn(loading.structure && "sally-hidden")}
           />
         }
       >
@@ -96,7 +98,9 @@ export function SidebarContent() {
         loading={loading.aria}
         runCategoryCheck={runCategoryCheck}
         hasRun={hasRun}
-        icon={<ImageIcon size="16" className={cn(loading.aria && "!hidden")} />}
+        icon={
+          <ImageIcon size="16" className={cn(loading.aria && "sally-hidden")} />
+        }
       >
         {violations.aria.map((violation: AccessibilityIssue, index) => (
           <AccessibilityViolation key={index} {...violation} />
@@ -112,7 +116,7 @@ export function SidebarContent() {
         icon={
           <ContrastIcon
             size="16"
-            className={cn(loading.contrast && "!hidden")}
+            className={cn(loading.contrast && "sally-hidden")}
           />
         }
       >

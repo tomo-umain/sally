@@ -31,27 +31,29 @@ export function AccessibilityViolation({
   return (
     <Alert variant={variant} className="animate-fade-in">
       <ViolationIcon severity={severity} />
-      <AlertTitle className="!flex !flex-row !items-center !gap-2">
+      <AlertTitle className="sally-flex sally-flex-row sally-items-center sally-gap-2">
         {message}
         {element && (
-          <div className="!font-mono !text-xs !opacity-80">{element}</div>
+          <div className="sally-font-mono sally-text-xs sally-opacity-80">
+            {element}
+          </div>
         )}
       </AlertTitle>
-      <AlertDescription className="!text-black/70">
-        {impact && <p className="!mt-2 !text-sm">{impact}</p>}
+      <AlertDescription className="sally-text-black/70">
+        {impact && <p className="sally-mt-2 sally-text-sm">{impact}</p>}
         {help && (
-          <p className="!mt-2 !text-sm">
+          <p className="sally-mt-2 sally-text-sm">
             {help} {icon && icon}
           </p>
         )}
 
         {!!outerHTML && (
-          <details className="!mt-2">
-            <summary className="!cursor-pointer !flex !flex-row !items-center !gap-1 !opacity-80">
+          <details className="sally-mt-2">
+            <summary className="sally-cursor-pointer sally-flex sally-flex-row sally-items-center sally-gap-1 sally-opacity-80">
               <SquareCodeIcon size={16} /> see HTML
             </summary>
 
-            <pre className="!text-xs !overflow-x-auto !p-2 !rounded-lg !whitespace-pre-wrap !break-all bg-black/5 !mt-2">
+            <pre className="see-html sally-text-xs sally-overflow-x-auto sally-p-2 sally-rounded-lg sally-whitespace-pre-wrap sally-break-all sally-mt-2">
               {outerHTML}
             </pre>
           </details>

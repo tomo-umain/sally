@@ -8,12 +8,11 @@ import {
   SheetHeader,
   SheetTitle,
 } from "./components/ui/sheet";
-import "./lib/tailwind.min";
 
 function SallySidebar() {
   return (
     <Sheet defaultOpen={true}>
-      <SheetContent className="!bg-white !text-black !z-[5000] !overflow-y-scroll animate-slide-in-from-right">
+      <SheetContent className="sally-text-black sally-bg-white sally-z-[5000] sally-overflow-y-scroll sally-animate-slide-in-from-right">
         <SheetHeader>
           <SheetTitle>
             <SidebarHeader />

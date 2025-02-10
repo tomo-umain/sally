@@ -1,10 +1,14 @@
+import process from "process";
+
 /** @type {import('tailwindcss').Config} */
 
 export default {
+  safelist: process.env.NODE_ENV === "development" ? [{ pattern: /./ }] : [],
   darkMode: ["class"],
   purge: {
     enabled: false,
   },
+  prefix: "sally-",
   corePlugins: {
     preflight: false,
   },
@@ -17,11 +21,6 @@ export default {
         6: "24px",
         8: "32px",
         16: "64px",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
       },
       colors: {
         sidebar: {

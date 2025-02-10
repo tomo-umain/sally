@@ -9,7 +9,7 @@
     "128": "icons/icon128.png"
   },
   "description": "the silliest accessibility helper you've ever seen.",
-  "permissions": ["activeTab", "tabs"],
+  "permissions": ["activeTab", "storage", "tabs", "webNavigation", "scripting"],
   "action": {},
   "background": {
     "service_worker": "src/background.js"

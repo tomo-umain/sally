@@ -4,17 +4,17 @@ import * as React from "react";
 import { cn } from "../../lib/utils";
 
 const alertVariants = cva(
-  "relative w-full rounded-lg border px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7",
+  "sally-relative sally-w-full sally-rounded-lg sally-border sally-border-2 sally-px-4 sally-py-3 sally-text-sm [&>svg+div]:sally-translate-y-[-3px] [&>svg]:sally-absolute [&>svg]:sally-left-4 [&>svg]:sally-top-4 [&>svg]:sally-text-foreground [&>svg~*]:sally-pl-7",
   {
     variants: {
       variant: {
-        default: "!bg-white",
+        default: "sally-bg-white",
         destructive:
-          "!bg-red-50/90 !border-red-200 !text-red-700 [&>svg]:!text-red-700 !text-left",
+          "sally-rounded-lg sally-bg-red-50/90 sally-border-red-200 sally-text-red-700 [&>svg]:sally-text-red-700 sally-text-left",
         warning:
-          "!bg-yellow-50/90 !border-yellow-200 !text-yellow-700 [&>svg]:!text-yellow-700 !text-left",
+          "sally-rounded-lg sally-bg-yellow-50/90 sally-border-yellow-200 sally-text-yellow-700 [&>svg]:sally-text-yellow-700 sally-text-left",
         success:
-          "!bg-green-50/90 !border-green-200 !text-green-700 [&>svg]:!text-green-700 !text-left",
+          "sally-rounded-lg sally-bg-green-50/90 sally-border-green-200 sally-text-green-700 [&>svg]:!text-green-700 sally-text-left",
       },
     },
     defaultVariants: {
@@ -26,14 +26,18 @@ const alertVariants = cva(
 const Alert = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
->(({ className, variant, ...props }, ref) => (
-  <div
-    ref={ref}
-    role="alert"
-    className={cn(alertVariants({ variant }), className)}
-    {...props}
-  />
-));
+>(({ className, variant, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      role="alert"
+      data-variant={variant}
+      className={cn(alertVariants({ variant }), className)}
+      {...props}
+    />
+  );
+});
+
 Alert.displayName = "Alert";
 
 const AlertTitle = React.forwardRef<
@@ -42,7 +46,10 @@ const AlertTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h5
     ref={ref}
-    className={cn("mb-1 font-medium leading-none tracking-tight", className)}
+    className={cn(
+      "sally-mb-1 sally-font-medium sally-leading-none sally-tracking-tight",
+      className
+    )}
     {...props}
   />
 ));
@@ -54,7 +61,7 @@ const AlertDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm [&_p]:leading-relaxed", className)}
+    className={cn("sally-text-sm [&_p]:sally-leading-relaxed", className)}
     {...props}
   />
 ));

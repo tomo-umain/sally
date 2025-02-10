@@ -1,15 +1,16 @@
 import { crx } from "@crxjs/vite-plugin";
-import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "tailwindcss";
 import { defineConfig } from "vite";
-import manifest from "./manifest.json";
+const manifest = require("./manifest.json");
 
-export default defineConfig({
-  plugins: [react(), crx({ manifest }), tailwindcss()],
-
-  css: {
-    postcss: {
-      plugins: [tailwindcss],
+export default defineConfig(async () => {
+  return {
+    plugins: [react(), crx({ manifest })],
+    css: {
+      postcss: {
+        plugins: [tailwindcss],
+      },
     },
-  },
+  };
 });

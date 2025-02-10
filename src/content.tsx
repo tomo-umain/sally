@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import SallySidebar from "./SallySidebar";
 
@@ -28,10 +27,6 @@ export function toggleSidebar() {
 
     document.body.appendChild(sidebarContainer);
     sidebarRoot = ReactDOM.createRoot(sidebarContainer);
-    sidebarRoot.render(
-      <React.StrictMode>
-        <SallySidebar />
-      </React.StrictMode>
-    );
+    sidebarRoot.render(<SallySidebar />);
   }
 }

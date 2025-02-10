@@ -1,18 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@namespace svg "http://www.w3.org/2000/svg";
+
+#accessibility-sidebar {
+  *:not(svg|*) {
+    all: revert;
+  }
+
+  div[contenteditable] {
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    line-break: after-white-space;
+  }
+}
 
 #accessibility-sidebar * {
   text-transform: lowercase !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 0.875rem !important;
 }
 
-.animate-fade-in {
+#accessibility-sidebar .sally-animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-.animate-slide-in-from-right {
+#accessibility-sidebar .sally-animate-slide-in-from-right {
   animation: slideInFromRight 0.3s ease-in-out;
+}
+/* 
+#accessibility-sidebar [role="alert"][data-variant="destructive"] {
+  border: 1px solid #f87171;
+}
+
+#accessibility-sidebar [role="alert"][data-variant="warning"] {
+  border: 1px solid #fbbf24;
+}
+
+#accessibility-sidebar [role="alert"][data-variant="success"] {
+  border: 1px solid #34d399;
+} */
+
+#accessibility-sidebar .see-html {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 @keyframes slideInFromRight {

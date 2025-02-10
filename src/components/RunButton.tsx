@@ -17,13 +17,14 @@ export const RunButton = ({
   return (
     <div>
       <Button
+        asChild
         onClick={() => runCategoryCheck(category)}
-        className="cursor-pointer"
+        className="sally-cursor-pointer sally-rounded-lg"
       >
-        <div className="!flex !gap-2 !items-center">
+        <div className="sally-flex sally-gap-2 sally-items-center">
           <RefreshCwIcon
             size="16"
-            className={cn("!animate-spin", !loading && "!hidden")}
+            className={cn("sally-animate-spin", !loading && "sally-hidden")}
           />
           {icon}
           run {category} checks

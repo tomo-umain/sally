@@ -1,29 +1,29 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "sally-inline-flex sally-items-center sally-justify-center sally-gap-2 sally-whitespace-nowrap sally-rounded-md sally-text-sm sally-font-medium sally-transition-colors focus-visible:sally-outline-none focus-visible:sally-ring-1 focus-visible:sally-ring-ring disabled:sally-pointer-events-none disabled:sally-opacity-50 [&_svg]:sally-pointer-events-none [&_svg]:sally-size-4 [&_svg]:sally-shrink-0",
   {
     variants: {
       variant: {
-        default: "!bg-white !text-black !shadow hover:!bg-primary/90",
+        default:
+          "sally-bg-white sally-text-black sally-shadow hover:sally-bg-primary/90",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+          "sally-bg-destructive sally-text-destructive-foreground sally-shadow-sm hover:sally-bg-destructive/90",
         outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+          "sally-border sally-border-input sally-bg-background sally-shadow-sm hover:sally-bg-accent hover:sally-text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "sally-bg-secondary sally-text-secondary-foreground sally-shadow-sm hover:sally-bg-secondary/80",
+        ghost: "hover:sally-bg-accent hover:sally-text-accent-foreground",
+        link: "sally-text-primary sally-underline-offset-4 hover:sally-underline",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
+        default: "sally-h-9 sally-px-4 sally-py-2",
+        sm: "sally-h-8 sally-rounded-md sally-px-3 sally-text-xs",
+        lg: "sally-h-10 sally-rounded-md sally-px-8",
+        icon: "sally-h-9 sally-w-9",
       },
     },
     defaultVariants: {

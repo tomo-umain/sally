@@ -24,7 +24,7 @@ export function AccessibilityCategory({
   icon,
 }: AccessibilityCategoryProps) {
   return (
-    <div className="!flex !flex-col !gap-4 mt-4">
+    <div className="sally-flex sally-flex-col sally-gap-4 sally-mt-4">
       <RunButton
         icon={icon}
         runCategoryCheck={runCategoryCheck}
@@ -37,7 +37,9 @@ export function AccessibilityCategory({
       )}
 
       {!loading && count && count > 0 ? (
-        <div className={cn("!flex !flex-col !gap-2")}>{children}</div>
+        <div className={cn("sally-flex sally-flex-col sally-gap-2")}>
+          {children}
+        </div>
       ) : null}
     </div>
   );

@@ -8,7 +8,7 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "description": "the silliest sidebar accessibility helper you've ever seen",
+  "description": "the silliest accessibility helper you've ever seen.",
   "permissions": [
     "activeTab",
     "tabs"
@@ -21,13 +21,13 @@
   "content_scripts": [
     {
       "js": [
-        "assets/content.tsx-loader-BPAZDprw.js"
+        "assets/content.tsx-loader-DFwZ521i.js"
       ],
       "matches": [
         "<all_urls>"
       ],
       "css": [
-        "assets/content-C0y2BeJK.css"
+        "assets/content-CdaUtrsX.css"
       ]
     }
   ],
@@ -40,7 +40,7 @@
         "<all_urls>"
       ],
       "resources": [
-        "assets/content.tsx-DifzqYOU.js"
+        "assets/content.tsx--CQnFttv.js"
       ],
       "use_dynamic_url": false
     }

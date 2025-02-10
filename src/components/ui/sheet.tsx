@@ -20,7 +20,7 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "sally-fixed sally-inset-0 sally-z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
@@ -30,16 +30,16 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  "fixed z-50 !gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
+  "sally-fixed sally-z-50 sally-gap-4 bg-background sally-p-6 sally-shadow-lg sally-transition sally-ease-in-out data-[state=closed]:sally-duration-300 data-[state=open]:sally-duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
   {
     variants: {
       side: {
-        top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+        top: "sally-inset-x-0 sally-top-0 sally-border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
         bottom:
-          "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-        left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+          "sally-inset-x-0 sally-bottom-0 sally-border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+        left: "sally-inset-y-0 sally-left-0 sally-h-full sally-w-3/4 sally-border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:sally-max-w-sm",
         right:
-          "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+          "sally-inset-y-0 sally-right-0 sally-h-full sally-w-3/4 sally-border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:sally-max-w-sm",
       },
     },
     defaultVariants: {
@@ -65,10 +65,10 @@ const SheetContent = React.forwardRef<
     >
       <div
         onClick={() => toggleSidebar()}
-        className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary cursor-pointer hover:bg-gray-400/20 p-1"
+        className="sally-absolute sally-right-4 sally-top-4 sally-rounded-sm sally-opacity-70 sally-ring-offset-background sally-transition-opacity hover:sally-opacity-100 focus:sally-outline-none focus:sally-ring-2 focus:sally-ring-ring focus:sally-ring-offset-2 disabled:sally-pointer-events-none data-[state=open]:sally-bg-secondary sally-cursor-pointer hover:sally-bg-gray-400/20 sally-p-1"
       >
-        <X className="h-4 w-4" />
-        <span className="sr-only">Close</span>
+        <X className="sally-h-4 sally-w-4" />
+        <span className="sally-sr-only">Close</span>
       </div>
       {children}
     </SheetPrimitive.Content>
@@ -82,7 +82,7 @@ const SheetHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col space-y-2 text-center sm:text-left",
+      "sally-flex sally-flex-col sally-space-y-2 sally-text-center sm:sally-text-left",
       className
     )}
     {...props}
@@ -96,7 +96,7 @@ const SheetFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      "sally-flex sally-flex-col-reverse sm:sally-flex-row sm:sally-justify-end sm:sally-space-x-2",
       className
     )}
     {...props}
@@ -110,7 +110,10 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn("text-lg font-semibold text-foreground", className)}
+    className={cn(
+      "sally-text-lg sally-font-semibold sally-text-foreground",
+      className
+    )}
     {...props}
   />
 ));
@@ -122,7 +125,7 @@ const SheetDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("sally-sally-text-sm sally-text-muted-foreground", className)}
     {...props}
   />
 ));

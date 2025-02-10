@@ -19,7 +19,7 @@ const DEBUG = false;
 const getSidebar = () =>
   document.getElementById("accessibility-sidebar") as HTMLElement | null;
 
-const landmarkNames = ["header", "main", "nav", "footer", "aside"];
+const landmarkNames = ["header", "main", "nav", "footer"];
 
 const getAllLandmarks = () =>
   Array.from(
@@ -80,7 +80,7 @@ const checkContrast = (element: HTMLElement) => {
         outerHTML: element.outerHTML,
         impact: "this text may be difficult to read for certain folks.",
         help: "ensure a contrast ratio of at least 4.5 to follow the WCAG, a standard so good that even dogs can read it.",
-        icon: <DogIcon size={16} className="inline" />,
+        icon: <DogIcon size={16} className="sally-inline" />,
       };
     }
   } catch (error) {
@@ -108,7 +108,7 @@ const checkAriaLabels = (element: HTMLElement) => {
       outerHTML: element.outerHTML,
       impact: "screen readers cannot identify the purpose of the element.",
       help: "add aria-label, aria-labelledby, or visible text content. unless its a decorative element, then, uh. nevermind.",
-      icon: <CroissantIcon size={16} className="inline" />,
+      icon: <CroissantIcon size={16} className="sally-inline" />,
     };
   } catch (error) {
     console.log(error);
@@ -159,7 +159,7 @@ export const checkAccessibility = (
           outerHTML: element.outerHTML,
           impact: "screen readers cannot identify the input purpose",
           help: `add a label element with matching "for" attribute or aria-label. don't do it for the gram, do it for the screen readers.`,
-          icon: <CameraIcon size={16} className="inline" />,
+          icon: <CameraIcon size={16} className="sally-inline" />,
         });
       }
     });
@@ -176,7 +176,7 @@ export const checkAccessibility = (
           outerHTML: element.outerHTML,
           impact: "screen readers cannot describe the image.",
           help: "add alt attribute to provide image description, if image is not decorative. an image is only as good as the caption.",
-          icon: <CaptionsIcon size={16} className="inline" />,
+          icon: <CaptionsIcon size={16} className="sally-inline" />,
         });
       }
     });
@@ -193,7 +193,7 @@ export const checkAccessibility = (
           outerHTML: element.outerHTML,
           impact: "element cannot be accessed via keyboard.",
           help: "ensure element is focusable via keyboard for better accessibility. why? imagine trying to find your charger in a pitch black room, not fun.",
-          icon: <MoonStarIcon size={16} className="inline" />,
+          icon: <MoonStarIcon size={16} className="sally-inline" />,
         });
       }
     });
@@ -223,7 +223,7 @@ export const checkAccessibility = (
               help: `expected h${
                 prevLevel + 1
               }, found h${currentLevel}. try not to skip heading levels. you wouldn't go straight to dessert, would you?`,
-              icon: <IceCreamBowlIcon size={16} className="inline" />,
+              icon: <IceCreamBowlIcon size={16} className="sally-inline" />,
             });
           }
         }
@@ -249,8 +249,8 @@ export const checkAccessibility = (
           element: `<${landmark}>`,
           impact:
             "aw, this is awkward, but screen readers may not navigate correctly with the current setup.",
-          help: `consider adding an <${landmark}> element to define the region. it's like a mini-map for screen readers.`,
-          icon: <MapIcon size={16} className="inline" />,
+          help: `consider adding an <${landmark}> element to define the region. landmark regions are like a mini-map for screen readers.`,
+          icon: <MapIcon size={16} className="sally-inline" />,
         });
       }
     });
